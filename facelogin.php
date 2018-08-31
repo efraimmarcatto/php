@@ -4,7 +4,7 @@ $helper = $fb->getRedirectLoginHelper();
 
 $permissions = array('email');
 
-$loginurl = $helper->getLoginUrl('http://phpfinal.herokuapp.com/callback.php', $permissions);
+$loginurl = $helper->getLoginUrl('http://127.0.0.1:5000/callback.php', $permissions);
 
 
 ?>
