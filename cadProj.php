@@ -55,7 +55,7 @@
 						$nomearquivo = "default.png";
 					}
 				}
-				$sql = "INSERT INTO projetos (id_adm, nome, descricao,foto,votos) VALUES ($idadm,'$nome','$descricao','$nomearquivo',0)";
+				$sql = "INSERT INTO projetos (id_adm,nome,descricao,foto,votos) VALUES ('$idadm','$nome','$descricao','$nomearquivo',0)";
 				$sql = $pdo->query($sql);
 				header('Location: listProj.php');
 				}
