@@ -27,6 +27,9 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id']))
 		
 	}else{
 		
+			echo'<table border="0" width="100%">
+					<tr>
+						<th width="90%"><a href="login.php">Adm Login</a></th>';
 		if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 		{
 			
@@ -35,13 +38,11 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id']))
 				$fbname = $r->name;
 				$fbname = explode(' ',trim($fbname));
 				$fbname = $fbname[0];
-			echo'<table border="0" width="100%">
-					<tr>
-						<th width="90%"><a href="login.php">Adm Login</a></th>
-						<th>Logado como '.$fbname.' - <a href="sairface.php">Sair</a></th>
-					</tr></table><hr/>';
+				echo '
+						<th>Logado como '.$fbname.' - <a href="sairface.php">Sair</a></th>';
 		}
 
+				echo	'</tr></table><hr/>';
 	echo'<table border="0" width="100%">
 			<tr>
 				<th>Nome</th>
