@@ -66,7 +66,7 @@
 				<title>Cadastro de Projeto</title>
 				</head>
 				<body>
-				<h1>Cadastro de Projetos </h1> 
+				<h1>Cadastro de Projetos - $idadm</h1> 
 				<form method='POST' enctype='multipart/form-data'>
 				Nome:
 				<input type='text' name='nome'/> </br> </br>
