@@ -11,7 +11,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
 			$senha=md5(addslashes($_POST["senha"]));
 			$usuario=strtolower(addslashes($_POST["usuario"]));
 			$email=addslashes($_POST["email"]);
-			$sql = "INSERT INTO admuser (id,nome,usuario,email,senha) VALUES (NULL,'$nome','$usuario','$email','$senha')";
+			$sql = "INSERT INTO admuser (nome,usuario,email,senha) VALUES ('$nome','$usuario','$email','$senha')";
 			$sql = $pdo->query($sql);
 			header("Location: listAdm.php");
 		}
