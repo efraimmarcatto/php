@@ -12,25 +12,29 @@
 						$imagem = $_FILES['foto'];
 						$nomearquivo = md5($nome.rand(0,99)).strtolower(substr($imagem['name'],-4));
 						echo $nomearquivo;
-						if(strtolower(substr($imagem['name'],-3)) =='png' || strtolower(substr($imagem['name'],-3) == 'jpg'))
+						if(strtolower(substr($nomearquivo,-3)) =='png' || strtolower(substr($nomearquivo,-3) == 'jpg'))
 						{
 						move_uploaded_file($imagem['tmp_name'],'imagens/'.$nomearquivo);
-
+						echo '</br>moveu arquivo';
 						//parametros para redimensionamento da imagem
 
 						list($imgW, $imgH) = getimagesize("imagens/$nomearquivo");
 						$maxW = 200;
 						$maxH = 200;
 						$ratio = $imgW / $imgH;
-						if($maxW / $maxH > $ratio){
+						if($maxW / $maxH > $ratio)
+						{
 							$maxW = $maxH * $ratio;
-						}else{
+						}else
+						{
 							$maxH = $maxW / $ratio;
 
 						}
+						
 						$final = imagecreatetruecolor($maxW,$maxH);
 
-						if(substr($nomearquivo,-3) == 'png' ){
+						if(substr($nomearquivo,-3) == 'png' )
+						{
 							$final = imagesavealpha($final,true);
 							$trans_colour = imagecolorallocatealpha($final, 0, 0, 0, 127);
 							imagefill($final, 0, 0, $trans_colour);
@@ -38,23 +42,30 @@
 							
 							imagecopyresampled($final, $imgpng,0,0,0,0,$maxW,$maxH,$imgW,$imgH);
 							imagepng($final,'imagens/'.$nomearquivo);
-						}else{
-							if(substr($nomearquivo,-3) == 'jpg'){
+							echo '</br>Arquivo png';
+						}else
+						{
+							if(substr($nomearquivo,-3) == 'jpg')
+							{
 								$imgjpg = imagecreatefromjpeg('imagens/'.$nomearquivo);	
 								imagecopyresampled($final, $imgjpg,0,0,0,0,$maxW,$maxH,$imgW,$imgH);
 								imagejpeg($final,'imagens/'.$nomearquivo,100);
+								echo '</br>Arquivo jpg';
 							}
 							
 							
 
 						}
+						}
 				}
-				}
-				if(substr($nomearquivo,-3)!='png'){
-					if(substr($nomearquivo,-3)!='jpg'){
+				if(substr($nomearquivo,-3)!='png')
+				{
+					if(substr($nomearquivo,-3)!='jpg')
+					{
 						$nomearquivo = "default.png";
 					}
 				}
+				echo 'Arquivo para banco > '.$nomearquivo;
 				$sql = "INSERT INTO projetos (id_adm,nome,descricao,foto,votos) VALUES ('$idadm','$nome','$descricao','$nomearquivo',0)";
 				$sql = $pdo->query($sql);
 				header('Location: listProj.php');
@@ -66,7 +77,7 @@
 				<title>Cadastro de Projeto</title>
 				</head>
 				<body>
-				<h1>Cadastro de Projetos - $idadm</h1> 
+				<h1>Cadastro de Projetos - </h1> 
 				<form method='POST' enctype='multipart/form-data'>
 				Nome:
 				<input type='text' name='nome'/> </br> </br>
