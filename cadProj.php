@@ -1,9 +1,8 @@
 <?php
 	require 'con.php';
 	session_start();
-?>
 
-<?php
+
 	if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
 		$idadm = $_SESSION['id'];
 			if(isset($_POST['nome']) && !empty($_POST['nome']) ){
@@ -12,6 +11,7 @@
 				if(isset($_FILES['foto']) && !empty($_FILES['foto']['tmp_name'])){
 						$imagem = $_FILES['foto'];
 						$nomearquivo = md5($nome.rand(0,99)).strtolower(substr($imagem['name'],-4));
+						echo $nomearquivo;
 						if(strtolower(substr($imagem['name'],-3)) =='png' || strtolower(substr($imagem['name'],-3) == 'jpg'))
 						{
 						move_uploaded_file($imagem['tmp_name'],'imagens/'.$nomearquivo);
