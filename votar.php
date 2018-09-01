@@ -22,7 +22,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 				if(!$id['id_proj']==$idp)
 				{
 				
-					$sql = "UPDATE projetos (votos) ( votos  + 1) WHERE id = $idp";
+					$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
 					$sql = $pdo->query($sql);
 					$sql = "INSERT INTO convotos (id_proj,id_uface VALUES ($idp, id_uface='$idfu')";
 					$sql = $pdo->query($sql);
@@ -36,7 +36,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 		}else{
 					$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
 					$sql = $pdo->query($sql);
-					$sql = "INSERT INTO convotos SET id_proj = '$idp', id_uface='$idfu'";
+					$sql = "INSERT INTO convotos (id_proj,id_uface VALUES ($idp, id_uface='$idfu')";
 					$sql = $pdo->query($sql);
 										
 					header("Location: index.php");
