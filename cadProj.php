@@ -15,7 +15,7 @@
 						if(strtolower(substr($nomearquivo,-3)) =='png' || strtolower(substr($nomearquivo,-3) == 'jpg'))
 						{
 						echo '</br> caminho servidor > '.$imagem['tmp_name'];
-						//	move_uploaded_file($imagem['tmp_name'],'imagens/'.$nomearquivo);
+							move_uploaded_file($imagem['tmp_name'],'imagens/'.$nomearquivo);
 						echo '</br>moveu arquivo';
 						//parametros para redimensionamento da imagem
 
