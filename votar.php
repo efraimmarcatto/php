@@ -26,7 +26,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 				
 				}
 			}	
-			$sql = "SELECT votos FROM projetos WHERE id = $idp";
+			$sql = "SELECT * FROM projetos WHERE id = $idp";
 			$sql = $pdo->query($sql);
 			$sql = $sql->fetch();
 			$votos = $sql['votos'] + 1;
@@ -39,7 +39,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 			
 	
 		}else{
-					$sql = "SELECT votos FROM projetos WHERE id = $idp";
+					$sql = "SELECT * FROM projetos WHERE id = $idp";
 					$sql = $pdo->query($sql);
 					$sql = $sql->fetch();
 					$votos = $sql['votos'] + 1;
