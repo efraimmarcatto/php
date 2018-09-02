@@ -37,7 +37,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 			$sql = "INSERT INTO convotos (id_proj,id_uface) VALUES ($idp, '$idfu')";
 			$sql = $pdo->query($sql);
 			
-			//header("Location: index.php");
+			header("Location: index.php");
 			
 	
 		}else{
