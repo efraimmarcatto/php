@@ -23,7 +23,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 				{
 				
 					echo 'Você já voltou nesse projeto!</br><a href="index.php">Projetos</a>';
-					echo '</br>'.$id['id_proj'];
+					exit();
 				
 				}
 			}	
