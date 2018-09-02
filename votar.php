@@ -19,7 +19,7 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 		
 			foreach($sql->fetchAll() as $id)
 			{
-				if(!$id['id_proj']==$idp)
+				if($id['id_proj']!=$idp)
 				{
 				
 					$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
