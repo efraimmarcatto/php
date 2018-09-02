@@ -19,19 +19,20 @@ if(isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token']))
 		
 			foreach($sql->fetchAll() as $id)
 			{
-				if($id['id_proj']!=$idp)
+				if($id['id_proj']==$idp)
 				{
 				
-					$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
-					$sql = $pdo->query($sql);
-					$sql = "INSERT INTO convotos (id_proj,id_uface) VALUES ($idp, '$idfu')";
-					$sql = $pdo->query($sql);
-					header("Location: index.php");
+					echo 'Você já voltou nesse projeto!</br><a href="index.php">Projetos</a>';
 				
 				}
 			}	
 			
-			echo 'Você já voltou nesse projeto!</br><a href="index.php">Projetos</a>';
+			$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
+			$sql = $pdo->query($sql);
+			$sql = "INSERT INTO convotos (id_proj,id_uface) VALUES ($idp, '$idfu')";
+			$sql = $pdo->query($sql);
+			header("Location: index.php");
+			
 	
 		}else{
 					$sql = "UPDATE projetos SET votos = votos  + 1 WHERE id = $idp";
